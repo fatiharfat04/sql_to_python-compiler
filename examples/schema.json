@@ -1,0 +1,19 @@
+{
+  "mahasiswa": {
+    "nim": "INT",
+    "nama": "TEXT",
+    "jurusan": "TEXT",
+    "ipk": "DOUBLE",
+    "kota": "TEXT"
+  },
+  "mata_kuliah": {
+    "kode": "TEXT",
+    "nama_mk": "TEXT",
+    "sks": "INT"
+  },
+  "nilai": {
+    "nim": "INT",
+    "kode": "TEXT",
+    "skor": "DOUBLE"
+  }
+}

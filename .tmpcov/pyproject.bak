@@ -1,0 +1,61 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sqlcompiler"
+version = "0.1.0"
+description = "Perancangan dan Implementasi Kompiler Query SQL ke Bahasa Pemrograman Python (dialek MySQL 8.4 -> pandas)"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "pandas",
+    "pymysql",
+    "typer",
+    "rich",
+    "streamlit",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "pytest-cov",
+    "ruff",
+    "mypy",
+    "types-PyMySQL",
+    "pandas-stubs",
+]
+
+[project.scripts]
+sqlc = "sqlcompiler.cli:app"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I"]
+
+[tool.mypy]
+strict = true
+python_version = "3.12"
+mypy_path = "src"
+packages = ["sqlcompiler"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = [
+    "mysql: tes yang membutuhkan server MySQL 8.4 sungguhan (tidak boleh di-skip)",
+]
+addopts = "-ra"
+
+[tool.coverage.run]
+source = ["sqlcompiler"]
+branch = false
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = false
